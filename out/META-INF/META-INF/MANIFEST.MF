@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: liruijuan
+Build-Jdk: 1.8.0_171
+Implementation-Title: test
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.jie
+Main-Class: ${start-class}
+

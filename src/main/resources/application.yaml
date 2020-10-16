@@ -1,0 +1,35 @@
+spring:
+  mail:
+    host: smtp.qq.com
+    username: 1150482495@qq.com
+    password: ppqhxmvruhuabahb
+    properties.mail.smtp.port: 465
+    from: 1150482495@qq.com
+    to: 1472583577@qq.com
+    default-encoding: utf-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            enable: true
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/jiedai?serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+server:
+  servlet:
+    context-path: /test
+    jsp:
+      init-parameters:
+        development: true
+  port: 8080
+mybatis:
+  mapper-locations: classpath:com/jie/test/mapper/*.xml
+  type-aliases-package: com.jie.test.entity
+

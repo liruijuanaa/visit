@@ -1,0 +1,39 @@
+spring:
+  mail:
+    host: smtp.163.com #�����ʼ�������
+    username: liyahui360@163.com #�����ʼ��������ַ
+    password: IWQACOMBGHGKSQIT #�ͻ�����Ȩ�룬�����������룬������������������Զ����ɵ�
+    properties.mail.smtp.port: 994 #�˿ں�465��587
+    from: liyahui360@163.com # �����ʼ��ĵ�ַ��������usernameһ��
+    to: 269780193@qq.com # ����������
+    default-encoding: utf-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            enable: true
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/jiedai
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+server:
+  servlet:
+    context-path: /test
+    jsp:
+      init-parameters:
+        development: true
+  port: 8989
+#mybatis:
+#  mapper-locations: classpath:com/baizhi/mapper/*.xml
+#  type-aliases-package: com.baizhi.entity
+

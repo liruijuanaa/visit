@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jie.test.dao.YuyueDao">
+
+    <resultMap type="com.jie.test.entity.Yuyue" id="YuyueMap">
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="applyname" column="applyName" jdbcType="VARCHAR"/>
+        <result property="applydate" column="applyDate" jdbcType="VARCHAR"/>
+        <result property="guestname" column="guestName" jdbcType="VARCHAR"/>
+        <result property="guesttel" column="guestTel" jdbcType="VARCHAR"/>
+        <result property="followcount" column="followCount" jdbcType="VARCHAR"/>
+        <result property="guestdate" column="guestDate" jdbcType="VARCHAR"/>
+        <result property="gusettime" column="gusetTime" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="guesttools" column="guestTools" jdbcType="VARCHAR"/>
+        <result property="guestcar" column="guestCar" jdbcType="VARCHAR"/>
+        <result property="guestfoods" column="guestFoods" jdbcType="VARCHAR"/>
+        <result property="guestacc" column="guestAcc" jdbcType="VARCHAR"/>
+        <result property="godate" column="goDate" jdbcType="VARCHAR"/>
+        <result property="gotime" column="goTime" jdbcType="VARCHAR"/>
+        <result property="gotools" column="goTools" jdbcType="VARCHAR"/>
+        <result property="gocar" column="goCar" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryByName" resultMap="YuyueMap" parameterType="String">
+        select
+          title, applyName, applyDate, guestName, guestTel, followCount, guestDate, gusetTime, address, guestTools, guestCar, guestFoods, guestAcc, goDate, goTime, goTools, goCar
+        from jiedai.yuyue
+        where guestName= #{guestname}
+    </select>
+
+<!--    &lt;!&ndash;查询指定行数据&ndash;&gt;-->
+<!--    <select id="queryAllByLimit" resultMap="YuyueMap">-->
+<!--        select-->
+<!--          title, applyName, applyDate, guestName, guestTel, followCount, guestDate, gusetTime, address, guestTools, guestCar, guestFoods, guestAcc, goDate, goTime, goTools, goCar-->
+<!--        from jiedai.yuyue-->
+<!--        limit #{offset}, #{limit}-->
+<!--    </select>-->
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="YuyueMap" parameterType="com.jie.test.entity.Yuyue">
+        select
+        title, applyName, applyDate, guestName, guestTel, followCount, guestDate, gusetTime, address, guestTools,
+        guestCar, guestFoods, guestAcc, goDate, goTime, goTools, goCar
+        from jiedai.yuyue
+        <where>
+            <if test="title != null and title != ''">
+                and title = #{title}
+            </if>
+            <if test="applyname != null and applyname != ''">
+                and applyName = #{applyname}
+            </if>
+            <if test="applydate != null and applydate != ''">
+                and applyDate = #{applydate}
+            </if>
+            <if test="guestname != null and guestname != ''">
+                and guestName = #{guestname}
+            </if>
+            <if test="guesttel != null and guesttel != ''">
+                and guestTel = #{guesttel}
+            </if>
+            <if test="followcount != null and followcount != ''">
+                and followCount = #{followcount}
+            </if>
+            <if test="guestdate != null and guestdate != ''">
+                and guestDate = #{guestdate}
+            </if>
+            <if test="gusettime != null and gusettime != ''">
+                and gusetTime = #{gusettime}
+            </if>
+            <if test="address != null and address != ''">
+                and address = #{address}
+            </if>
+            <if test="guesttools != null and guesttools != ''">
+                and guestTools = #{guesttools}
+            </if>
+            <if test="guestcar != null and guestcar != ''">
+                and guestCar = #{guestcar}
+            </if>
+            <if test="guestfoods != null and guestfoods != ''">
+                and guestFoods = #{guestfoods}
+            </if>
+            <if test="guestacc != null and guestacc != ''">
+                and guestAcc = #{guestacc}
+            </if>
+            <if test="godate != null and godate != ''">
+                and goDate = #{godate}
+            </if>
+            <if test="gotime != null and gotime != ''">
+                and goTime = #{gotime}
+            </if>
+            <if test="gotools != null and gotools != ''">
+                and goTools = #{gotools}
+            </if>
+            <if test="gocar != null and gocar != ''">
+                and goCar = #{gocar}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="" useGeneratedKeys="true">
+        insert into jiedai.yuyue(title, applyName, applyDate, guestName, guestTel, followCount, guestDate, gusetTime, address, guestTools, guestCar, guestFoods, guestAcc, goDate, goTime, goTools, goCar)
+        values (#{title}, #{applyname}, #{applydate}, #{guestname}, #{guesttel}, #{followcount}, #{guestdate}, #{gusettime}, #{address}, #{guesttools}, #{guestcar}, #{guestfoods}, #{guestacc}, #{godate}, #{gotime}, #{gotools}, #{gocar})
+    </insert>
+
+<!--    <insert id="insertBatch" keyProperty="" useGeneratedKeys="true">-->
+<!--        insert into jiedai.yuyue(title, applyName, applyDate, guestName, guestTel, followCount, guestDate, gusetTime,-->
+<!--        address, guestTools, guestCar, guestFoods, guestAcc, goDate, goTime, goTools, goCar)-->
+<!--        values-->
+<!--        <foreach collection="entities" item="entity" separator=",">-->
+<!--            (#{entity.title}, #{entity.applyname}, #{entity.applydate}, #{entity.guestname}, #{entity.guesttel},-->
+<!--            #{entity.followcount}, #{entity.guestdate}, #{entity.gusettime}, #{entity.address}, #{entity.guesttools},-->
+<!--            #{entity.guestcar}, #{entity.guestfoods}, #{entity.guestacc}, #{entity.godate}, #{entity.gotime},-->
+<!--            #{entity.gotools}, #{entity.gocar})-->
+<!--        </foreach>-->
+<!--    </insert>-->
+
+<!--    <insert id="insertOrUpdateBatch" keyProperty="" useGeneratedKeys="true">-->
+<!--        insert into jiedai.yuyue(title, applyName, applyDate, guestName, guestTel, followCount, guestDate, gusetTime,-->
+<!--        address, guestTools, guestCar, guestFoods, guestAcc, goDate, goTime, goTools, goCar)-->
+<!--        values-->
+<!--        <foreach collection="entities" item="entity" separator=",">-->
+<!--            (#{entity.title}, #{entity.applyname}, #{entity.applydate}, #{entity.guestname}, #{entity.guesttel},-->
+<!--            #{entity.followcount}, #{entity.guestdate}, #{entity.gusettime}, #{entity.address}, #{entity.guesttools},-->
+<!--            #{entity.guestcar}, #{entity.guestfoods}, #{entity.guestacc}, #{entity.godate}, #{entity.gotime},-->
+<!--            #{entity.gotools}, #{entity.gocar})-->
+<!--        </foreach>-->
+<!--        on duplicate key update-->
+<!--        title = values(title) , applyName = values(applyName) , applyDate = values(applyDate) , guestName =-->
+<!--        values(guestName) , guestTel = values(guestTel) , followCount = values(followCount) , guestDate =-->
+<!--        values(guestDate) , gusetTime = values(gusetTime) , address = values(address) , guestTools = values(guestTools)-->
+<!--        , guestCar = values(guestCar) , guestFoods = values(guestFoods) , guestAcc = values(guestAcc) , goDate =-->
+<!--        values(goDate) , goTime = values(goTime) , goTools = values(goTools) , goCar = values(goCar)-->
+<!--    </insert>-->
+
+<!--    &lt;!&ndash;通过主键修改数据&ndash;&gt;-->
+<!--    <update id="update">-->
+<!--        update jiedai.yuyue-->
+<!--        <set>-->
+<!--            <if test="title != null and title != ''">-->
+<!--                title = #{title},-->
+<!--            </if>-->
+<!--            <if test="applyname != null and applyname != ''">-->
+<!--                applyName = #{applyname},-->
+<!--            </if>-->
+<!--            <if test="applydate != null and applydate != ''">-->
+<!--                applyDate = #{applydate},-->
+<!--            </if>-->
+<!--            <if test="guestname != null and guestname != ''">-->
+<!--                guestName = #{guestname},-->
+<!--            </if>-->
+<!--            <if test="guesttel != null and guesttel != ''">-->
+<!--                guestTel = #{guesttel},-->
+<!--            </if>-->
+<!--            <if test="followcount != null and followcount != ''">-->
+<!--                followCount = #{followcount},-->
+<!--            </if>-->
+<!--            <if test="guestdate != null and guestdate != ''">-->
+<!--                guestDate = #{guestdate},-->
+<!--            </if>-->
+<!--            <if test="gusettime != null and gusettime != ''">-->
+<!--                gusetTime = #{gusettime},-->
+<!--            </if>-->
+<!--            <if test="address != null and address != ''">-->
+<!--                address = #{address},-->
+<!--            </if>-->
+<!--            <if test="guesttools != null and guesttools != ''">-->
+<!--                guestTools = #{guesttools},-->
+<!--            </if>-->
+<!--            <if test="guestcar != null and guestcar != ''">-->
+<!--                guestCar = #{guestcar},-->
+<!--            </if>-->
+<!--            <if test="guestfoods != null and guestfoods != ''">-->
+<!--                guestFoods = #{guestfoods},-->
+<!--            </if>-->
+<!--            <if test="guestacc != null and guestacc != ''">-->
+<!--                guestAcc = #{guestacc},-->
+<!--            </if>-->
+<!--            <if test="godate != null and godate != ''">-->
+<!--                goDate = #{godate},-->
+<!--            </if>-->
+<!--            <if test="gotime != null and gotime != ''">-->
+<!--                goTime = #{gotime},-->
+<!--            </if>-->
+<!--            <if test="gotools != null and gotools != ''">-->
+<!--                goTools = #{gotools},-->
+<!--            </if>-->
+<!--            <if test="gocar != null and gocar != ''">-->
+<!--                goCar = #{gocar},-->
+<!--            </if>-->
+<!--        </set>-->
+<!--        where id= #{id}-->
+<!--    </update>-->
+
+<!--    &lt;!&ndash;通过主键删除&ndash;&gt;-->
+<!--    <delete id="deleteById">-->
+<!--        delete from jiedai.yuyue where id= #{id}-->
+<!--    </delete>-->
+
+</mapper>
