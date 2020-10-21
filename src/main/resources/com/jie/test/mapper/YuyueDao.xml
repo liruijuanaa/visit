@@ -26,7 +26,7 @@
     <select id="queryByName" resultMap="YuyueMap" parameterType="String">
         select
           title, applyName, applyDate, guestName, guestTel, followCount, guestDate, gusetTime, address, guestTools, guestCar, guestFoods, guestAcc, goDate, goTime, goTools, goCar
-        from jiedai.yuyue
+        from reception.yuyue
         where guestName= #{guestname}
     </select>
 
@@ -43,7 +43,7 @@
         select
         title, applyName, applyDate, guestName, guestTel, followCount, guestDate, gusetTime, address, guestTools,
         guestCar, guestFoods, guestAcc, goDate, goTime, goTools, goCar
-        from jiedai.yuyue
+        from reception.yuyue
         <where>
             <if test="title != null and title != ''">
                 and title = #{title}
@@ -101,7 +101,7 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="" useGeneratedKeys="true">
-        insert into jiedai.yuyue(title, applyName, applyDate, guestName, guestTel, followCount, guestDate, gusetTime, address, guestTools, guestCar, guestFoods, guestAcc, goDate, goTime, goTools, goCar)
+        insert into reception.yuyue(title, applyName, applyDate, guestName, guestTel, followCount, guestDate, gusetTime, address, guestTools, guestCar, guestFoods, guestAcc, goDate, goTime, goTools, goCar)
         values (#{title}, #{applyname}, #{applydate}, #{guestname}, #{guesttel}, #{followcount}, #{guestdate}, #{gusettime}, #{address}, #{guesttools}, #{guestcar}, #{guestfoods}, #{guestacc}, #{godate}, #{gotime}, #{gotools}, #{gocar})
     </insert>
 

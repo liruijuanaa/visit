@@ -102,7 +102,7 @@ public class EmailController {
 
             //之后需要往数据库里存储信息
             this.yuyueService.insert(yuyue);
-
+            System.out.println(yuyue);
             return ResultUtil.success();
         }catch (Exception e){
             return ResultUtil.error(300,e.getMessage());

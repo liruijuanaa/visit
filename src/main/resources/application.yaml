@@ -18,7 +18,7 @@ spring:
             enable: true
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/jiedai?serverTimezone=UTC
+    url: jdbc:mysql://10.99.10.88:3306/reception?useUnicode=true&characterEncoding=utf8&useSSL=false&noAccessToProcedureBodies=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: root
@@ -28,7 +28,7 @@ server:
     jsp:
       init-parameters:
         development: true
-  port: 8080
+  port: 9898
 mybatis:
   mapper-locations: classpath:com/jie/test/mapper/*.xml
   type-aliases-package: com.jie.test.entity
